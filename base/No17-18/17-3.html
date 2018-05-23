@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>3的小游戏</title>
+</head>
+<body>
+	<button onclick="myfunction()">3的小游戏</button>
+	<script type="text/javascript">
+		function myfunction(){
+			var i,j,k;
+			for(i=1;i<=100;i++)
+			{
+				j=i%10;
+				k=i/10;
+				if(i%3==0||j==3||k==3)
+				{
+					console.log("PA");
+				}
+				else{
+					console.log(i);
+				}
+			}
+		}
+		//从1到100，以此在console输出各数字，但是，当数字为3的倍数或者含有3的时候，输出“PA”
+        //比如：1,2,PA,4,5,PA,……,11,PA,PA,14,PA……
+	</script>
+</body>
+</html>

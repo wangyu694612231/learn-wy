@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>九九乘法表</title>
+	<style type="text/css">
+		.table{
+			border:#ccc solid 1px;
+		}
+	</style>
+</head>
+<body>
+	<table class="table">
+		<td id="td"></td>
+	</table>
+	<button onclick="tr()">点击生成九九乘法表</button>
+	<script type="text/javascript">
+		function tr(){
+			var m=1,n=1,t=1;
+			for(m=1;m<=9;m++)
+			{
+				var a=document.createElement("a");
+				var td=document.getElementById("td");
+				td.appendChild(a);
+				for(n=1;n<=9;n++)
+				{
+					if(n<m||m==n)
+					{
+						t=m*n;
+						console.log(m+"*"+n+"="+t);
+						var para=document.createElement("td");
+						var node=document.createTextNode(n+"*"+m+"="+t);
+						var element=document.getElementById("td");
+						element.appendChild(para);
+						para.appendChild(node);
+					}
+				}
+			}
+		}
+		//第一步，最低要求：在Console中按行输出 n * m = t
+		//然后，尝试在网页中，使用table来实现一个九九乘法表 
+	</script>
+</body>
+</html>

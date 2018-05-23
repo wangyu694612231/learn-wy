@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">    
+    <title>NO17-DEMO</title>
+</head>
+<body onload="startTime()">        
+    <input id="first-number" type="text" value="0" placeholder="第一个数字"">
+    <input id="second-number" type="text" value="0" placeholder="第二个数字">
+    <button id="add-btn" onclick="add()">加</button>
+    <button id="minus-btn" onclick="dec()">减</button>
+    <button id="times-btn" onclick="times()">乘</button>
+    <button id="divide-btn" onclick="divide()">除</button>
+    <p id="result2"></p>
+    <p id="result"></p>
+    <input id="dec-number" type="number" placeholder="输入一个十进制非负整数">
+    <input id="bin-bit" type="number" placeholder="输入转化后二进制数字位数">
+    <button id="trans-btn" onclick="dec2bin()">转化为二进制</button>
+    <p id="result1">运算结果</p>
+    <button onclick="small()">3的小游戏</button>
+    <table class="table">
+        <td id="td"></td>
+    </table>
+    <button onclick="tr()">点击生成九九乘法表</button>
+    <div id="txt"></div>
+    <button onclick="alert1()">问候</button>
+    <script>
+    	 function add() 
+         {
+           try
+            { 
+                var x=Number(document.getElementById("first-number").value)+Number(document.getElementById("second-number").value);
+                if(x=="")    
+                    {console.log("值为空");
+                    throw "值为空";}
+                if(isNaN(x)) 
+                    {console.log("不是数字");
+                    throw "不是数字";}
+                else{
+                    document.getElementById("result2").innerHTML=x;
+                }
+            }
+            catch(err)
+            {
+                var y = document.getElementById("result");
+                y.innerHTML="错误：" + err + "。";
+            }
+        }
+        function dec() 
+         {
+           try
+            { 
+                var x=document.getElementById("first-number").value - document.getElementById("second-number").value;
+                if(x=="")    
+                    {console.log("值为空");
+                    throw "值为空";}
+                if(isNaN(x)) 
+                    {console.log("不是数字");
+                    throw "不是数字";}
+                else{
+                    document.getElementById("result2").innerHTML=x;
+                }
+            }
+            catch(err)
+            {
+                var y = document.getElementById("result");
+                y.innerHTML="错误：" + err + "。";
+            }
+        }
+        function times() 
+         {
+           try
+            { 
+                var x=document.getElementById("first-number").value*document.getElementById("second-number").value;
+                if(x=="")    
+                    {console.log("值为空");
+                    throw "值为空";}
+                if(isNaN(x)) 
+                    {console.log("不是数字");
+                    throw "不是数字";}
+                else{
+                    document.getElementById("result2").innerHTML=x;
+                }
+            }
+            catch(err)
+            {
+                var y = document.getElementById("result");
+                y.innerHTML="错误：" + err + "。";
+            }
+        }
+        function divide() 
+         {
+           try
+            { 
+                var x=document.getElementById("first-number").value/document.getElementById("second-number").value;
+                if(x=="")    
+                    {console.log("值为空");
+                    throw "值为空";}
+                if(isNaN(x)) 
+                    {console.log("不是数字");
+                    throw "不是数字";}
+                if(document.getElementById("second-number").value==0)
+                    {console.log("被除数为0");
+                    throw "被除数为0";}
+                else{
+                    document.getElementById("result2").innerHTML=x;
+                }
+            }
+            catch(err)
+            {
+                var y = document.getElementById("result");
+                y.innerHTML="错误：" + err + "。";
+            }
+        }
+        function dec2bin() {
+            var b,i,c;
+                b = Number(document.getElementById('dec-number').value);
+            if(b>0 && b%1==0)
+            {
+                c = b.toString(2);
+                document.getElementById('result1').innerHTML=c;
+                if(c.length>Number(document.getElementById('bin-bit').value))
+                {
+                    console.log("err");
+                }
+            }    
+        }
+        function small(){
+            var i,j,k;
+            for(i=1;i<=100;i++)
+            {
+                j=i%10;
+                k=i/10;
+                if(i%3==0||j==3||k==3)
+                {
+                    console.log("PA");
+                }
+                else{
+                    console.log(i);
+                }
+            }
+        }
+        function tr(){
+            var m=1,n=1,t=1;
+            for(m=1;m<=9;m++)
+            {
+                var a=document.createElement("a");
+                var td=document.getElementById("td");
+                td.appendChild(a);
+                for(n=1;n<=9;n++)
+                {
+                    if(n<m||m==n)
+                    {
+                        t=m*n;
+                        console.log(m+"*"+n+"="+t);
+                        var para=document.createElement("td");
+                        var node=document.createTextNode(n+"*"+m+"="+t);
+                        var element=document.getElementById("td");
+                        element.appendChild(para);
+                        para.appendChild(node);
+                    }
+                }
+            }
+        }
+        function startTime()
+        {
+            var today=new Date();
+            var h=today.getHours();
+            var m=today.getMinutes();
+            var s=today.getSeconds();
+            m=checkTime(m);
+            s=checkTime(s);
+            document.getElementById('txt').innerHTML=h+":"+m+":"+s;
+            setTimeout('startTime()',500);
+        }
+        function checkTime(i)
+        {
+            if (i<10) 
+              {i="0" + i;}
+              return i;
+        }
+        function alert1(){
+            var today=new Date();
+            var c=Number(today.getHours());
+            console.log(c);
+            if(c<=12)
+                {alert("早上好");}
+            if(c>12&&c<=18)
+                {alert("下午好");}
+            if(c>18&&c<=24)
+                {alert("晚上好");}
+        }
+    </script>
+</body>
+</html>
