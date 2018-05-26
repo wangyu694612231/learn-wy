@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>CSS Sprite</title>
+	<style type="text/css">
+		.img1{
+			height:480px;
+			width: 500px;
+			background-image: url("img1.png");
+			background-position: 0px 0px;
+			background-repeat: no-repeat;
+		}
+	</style>
+</head>
+<body>
+	<div class="img1"></div>
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		var height=-480;
+		var b=0;
+		var i=0;
+		times=setInterval(turn,50)
+		function turn(){
+			var img1=document.getElementsByClassName("img1");
+			img1[0].style.backgroundPosition="0"+"px"+" "+height.toString()+"px";
+			if(i==0)
+			{
+				height=height-480;
+				b++;
+				if(b==16)
+					{i=1;}
+			}
+			if(i==1)
+			{
+				height=height+480;
+				b--;
+				if(b==0)
+					{i=0;}
+			}
+		}
+	}
+</script>
+</html>
