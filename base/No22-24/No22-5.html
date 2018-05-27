@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>线性表</title>
+</head>
+<body>
+		<input id="queue-input" type="text">
+		<p id="queue-cont">队列内容：apple-&lt;pear</p>    
+		<button id="in-btn">入队</button>
+		<button id="out-btn">出队</button>
+		<button id="font-btn">打印队头元素内容</button>
+		<button id="empty-btn">判断队列是否为空</button>
+</body>
+		<script>
+		var queue = ["apple", "pear"];
+		var num = document.querySelector("#queue-input");
+		var inbtn = document.querySelector("#in-btn");
+		var outbtn = document.querySelector("#out-btn");
+		var fontbtn = document.querySelector("#font-btn");
+		var emptybtn = document.querySelector("#empty-btn");
+		var queuecont = document.querySelector("#queue-cont");	
+		var arr=new Array;	
+		inbtn.onclick=function(){
+			queue.unshift(num.value);
+			arr=queue.join("<-");
+			queuecont.innerHTML="队列内容："+arr;
+		}
+		outbtn.onclick=function(){
+			queue.shift();
+			arr=queue.join("<-");
+			queuecont.innerHTML="队列内容："+arr;
+		}
+		fontbtn.onclick=function(){
+			var a;
+			a=queue.shift();
+			queuecont.innerHTML=a;
+			queue.unshift(a);
+		}
+		emptybtn.onclick=function(){
+			if(queue[0]==null)
+				queuecont.innerHTML="数组为空";
+		}
+		</script>
+</html>

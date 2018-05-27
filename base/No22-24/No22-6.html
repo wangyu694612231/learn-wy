@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>排序</title>
+</head>
+<body>
+	<button>升序</button>
+	<button>降序</button>
+	<button>二维数组降序</button>
+	<button>对象降序</button>
+</body>
+<script type="text/javascript">
+	var arr = [43, 54, 4, -4, 84, 100, 58, 27, 140];
+	var arr1 = ['apple', 'dog', 'cat', 'car', 'zoo', 'orange', 'airplane'];
+	var arr2 = [[10, 14], [16, 60], [7, 44], [26, 35], [22, 63]];
+	var arr3 = [
+    {
+        id: 1,
+        name: 'candy',
+        value: 40
+    }, {
+        id: 2,
+        name: 'Simon',
+        value: 50
+    }, {
+        id: 3,
+        name: 'Tony',
+        value: 45
+    }, {
+        id: 4,
+        name: 'Annie',
+        value: 60
+    }
+];
+	var btn = document.getElementsByTagName("button");
+	btn[0].onclick=function(){
+		arr.sort(function(a,b){
+			return a-b;
+		});
+		console.log(arr);
+		arr1.sort();
+		console.log(arr1);
+	}
+	btn[1].onclick=function(){
+		arr.sort(function(a,b){
+			return b-a;
+		});
+		console.log(arr);
+		arr1.sort(function(a,b){
+			if(a>b)
+				return -1;
+			else return 1;
+		});
+		console.log(arr1);
+	}
+	btn[2].onclick=function(){
+		console.log(arr2);
+		arr2.sort(function(a,b){
+			return (b[1]-a[1]);
+		})
+		console.log(arr2);
+	}
+	btn[3].onclick=function(){
+		arr3.sort(function(a,b){
+			return (b.value-a.value);
+		})
+		console.log(arr3);
+	}
+</script>
+</html>

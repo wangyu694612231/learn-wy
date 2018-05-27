@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>遍历二叉树</title>
+</head>
+<body>
+	<button id="a">前序遍历</button>
+	<button id="b">中序遍历</button>
+	<button id="c">后序遍历</button>
+	<input type="text" name="" id="d" placeholder="输入ID">
+	<button id="d1">查找</button>
+	<input type="text" name="" id="name1" placeholder="输入Name">
+	<button id="name2">查找</button>
+</body>
+<script type="text/javascript">
+	var tree = {
+    "id": 0,
+    "name": "root",
+    "left": {
+        "id": 1,
+        "name": "Simon",
+        "left": {
+            "id": 3,
+            "name": "Carl",
+            "left": {
+                "id": 7,
+                "name": "Lee",
+                "left": {
+                    "id": 11,
+                    "name": "Fate"
+                }
+            },
+            "right": {
+                "id": 8,
+                "name": "Annie",
+                "left": {
+                    "id": 12,
+                    "name": "Saber"
+                }
+            }
+        },
+        "right": {
+            "id": 4,
+            "name": "Tony",
+            "left": {
+                "id": 9,
+                "name": "Candy"
+            }
+        }
+    },
+    "right": {
+        "id": 2,
+        "name": "right",
+        "left": {
+            "id": 5,
+            "name": "Carl",
+        },
+        "right": {
+            "id": 6,
+            "name": "Carl",
+            "right": {
+                "id": 10,
+                "name": "Kai"
+            }        
+        }
+    }
+}
+a.onclick=function(){
+	getListWithDLRroot(tree);
+}
+b.onclick=function(){
+	getListWithLDR(tree);
+}
+c.onclick=function(){
+	getListWithLRD(tree);
+}
+var d=document.getElementById("d");
+var d1=document.getElementById("d1");
+var name1=document.getElementById("name1");
+var name2=document.getElementById("name2");
+d1.onclick=function(){
+	findNameById(tree);
+}
+name2.onclick=function(){
+	findIdByName(tree);
+}
+// 假设id和name均不会重复，根据输入name找到对应的id
+function findIdByName(root) {
+	if(root==null){
+            return;
+        }
+        if(name1.value==root.name.toString())
+        {console.log(root.id);}
+        findIdByName(root.left);
+        findIdByName(root.right);
+}
+
+// 假设id和name均不会重复，根据输入id找到对应的name
+function findNameById(root) {
+	if(root==null){
+            return;
+        }
+        if(d.value==root.id)
+        {console.log(root.name);}
+        findNameById(root.left);
+        findNameById(root.right);
+}
+
+// 把这个对象中所有的名字以“前序遍历”的方式全部输出到console中
+
+var getListWithDLRroot=function(root) {
+        if(root==null){
+            return;
+        }
+        console.log(root.name);
+        getListWithDLRroot(root.left);
+        getListWithDLRroot(root.right);
+}
+
+// 把这个对象中所有的名字以“中序遍历”的方式全部输出到console中
+function getListWithLDR(root) {
+        if(root==null){
+            return;
+        }
+        getListWithLDR(root.left);
+        console.log(root.name);
+        getListWithLDR(root.right);
+}
+
+// 把这个对象中所有的名字以“后序遍历”的方式全部输出到console中
+function getListWithLRD(root) {
+        if(root==null){
+            return;
+        }
+        getListWithLRD(root.left);
+        getListWithLRD(root.right);
+        console.log(root.name);
+}
+</script>
+</html>
