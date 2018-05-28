@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<p id="time">时间</p>
+	<p id="time1">时间</p>
+</body>
+	<script type="text/javascript">
+		/*var today=new Date();
+		console.log(today);
+		window.onload=function(){
+			var t=setInterval(inner,100);
+		}
+		function inner(){
+			document.getElementById('time').innerHTML=today;
+		}*/
+		
+		setInterval(function(){ myTimer() }, 1000);
+		function myTimer() {
+			var today = new Date();
+    		document.getElementById("time").innerHTML = getyear(today)+"年"+getmonth(today)+"月"+getday(today)+"日"+weekdays(today)+gethours(today)+":"+getminutes(today)+":"+getseconds(today);
+    		document.getElementById("time1").innerHTML = getyear(today)+"-"+getmonth(today)+"-"+getday(today)+" "+weekdays1(today)+" "+gethours(today)+":"+getminutes(today)+":"+getseconds(today)+pmam(today);
+		}
+		function double(e){
+			if(e<10)
+				e="0"+e;
+			return e;
+		}
+		function getyear(e){
+			var y = e.getFullYear();
+			return y.toString();
+		}
+		function getmonth(e){
+			var m = e.getUTCMonth(e);
+			return m+1;
+		}
+		function getday(e){
+    		var d = e.getUTCDate();
+    		var d1= double(d);
+			return d1.toString();
+		}
+		function gethours(e){
+			var h = e.getHours();
+			var h1= double(h);
+			return h1.toString();
+		}
+		function gethours(e){
+			var h = e.getHours();
+			if(h>12)
+				h=h-12;
+			return h.toString();
+		}
+		function getminutes(e){
+			var m = e.getMinutes();
+			var m1= double(m);
+			return m1.toString();
+		}
+		function getseconds(e){
+			var s = e.getSeconds();
+			var s1= double(s);
+			return s1.toString();
+		}
+		function weekdays(e){
+			var weekday=["星期日","星期一","星期二","星期三","星期四","星期五","星期六"];
+			var days=e.getDay();
+			return weekday[days];
+		}
+		function weekdays1(e){
+			var weekday1=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+			var days=e.getDay();
+			return weekday1[days];
+		}
+		function pmam(e){
+			var pmam=e.getHours();
+			if(pmam<=12)
+				return "AM";
+			else return "PM";
+		}
+	</script>
+</html>
